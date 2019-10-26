@@ -5,104 +5,119 @@
 ##########
 
 #---- hello world ----
-#pierwsza linia kodu
-print("Hello WSB :)")
+
+print("Hello World!!")
 
 #---- calculator ----
 
-1 + 1
-2 * 10
-5 / 2
+2 + 3 
 
-5 % 2   #reszta z dzielenia
+2 / 3
+
+3 * 4 
+
+2^3
+
+5 % 2
+
+5 // 2
 
 #---- math / stat functions ----
 
 import numpy as np
 
 np.sum([1, 2, 3])
-np.mean([1,2,3])  #srednia
-np.median([1,2,3])   
+np.mean([2, 3, 4])
+np.median([2, 3, 4])
 
 #----- variables  ----
 
-a = 1410
+a = 1 
+b = 2
+c = 3
 
-abc_Test = "test"
+a + b + c
+
+np.sum([a, b, c])
 
 
 #---- data types-----
 
 ## logical 
 
-c =True
-d = False
+v1 = True
+
+v2 = False
+
+type(v1)
 
 1 == 1
 
-type(c)
+
 
 ## numeric
 
-a = 123
+a1 = 12345
+a2 = 1.123
 
-type(a)
+type(a1)
 
-b = 1.25
-
-type(b)
 
 
 ## text / string
 
-myText = "Python is awesome"
-type(myText)
+some_text = "Hello World!"
+
+type(some_text)
 
 ## Lists 
 
-
+# define a list
 myList = []
 
-myList = [1,2,3, "bla", "bla"]
+type(myList)
 
-
-# define a list
-
-
-
-# assign from list
-myList1 = [1,2,3]
-
-a, b, c, = myList1
-
-# add to a list
+myList = ['a','b','c', 1, 2, 3]
+myList
 
 x = [1,2,3]
-y = [3,4,5]
 
-x += y
+# assign from list
+a,b,c = x
+print(a,b,c)
+
+# add to a list
+x += x
+print(x)
 
 # check number of elements
-
-len(x)
+count_elements = len(x)
+print(count_elements)
 
 # add to a list
 l = []
-
-l.append([3,4,5])
+l.append("a")
+print(l) # ['a']
+l.append("b")
+print(l) # ['a', 'b']
 
 # remove from list 
 l = ['a', 'b', 'c','a', 'b', 'c']
 print(l)
 
 l.remove('a')
-
 print(l)
 
+
 # select element from list 
-l = ['a', 'b', 'c','a', 'b', 'c']
 l[0]
+l[1]
+
 l[-1]
+l[-2]
+
+l[0 : 2]
+l[-3 : -1]
 
 ## Tuples
 myTuple = ()
@@ -127,7 +142,6 @@ print(sampleTuple)
 sampleTuple
 sampleTuple[1]
 sampleTuple[1][0]
-
 
 ## Sets 
 mySet = {'a'}
@@ -158,8 +172,6 @@ mySet2 = {"a", "b", "c", "d"}
 print(mySet1.issubset(mySet2))
 
 
-
-
 ## Dicts
 
 poland_regions = {
@@ -168,26 +180,22 @@ poland_regions = {
 "wielkopolskie": 3475323
 }
 
+print(type(poland_regions))
 
 
 # add elements
-
-poland_regions['malopolskie'] = 337268
+poland_regions['malopolskie'] = 3372618
+print(poland_regions)
 
 # get all keys 
-
-poland_regions.keys()
-
-tst1 = poland_regions.keys()
-type(tst1)
+print(poland_regions.keys())
 
 # get value for requested key
-
-poland_regions.get("slaskie")
+print(poland_regions.get("slaskie"))
 
 # get all values
 
-poland_regions.values()
+print(poland_regions.values())
 
 # delete from dict a value with particular key
 poland_regions= {
@@ -197,10 +205,9 @@ poland_regions= {
 }
 
 
-
 poland_regions['malopolskie'] = 3372618
-
 poland_regions.pop("malopolskie")
+print(poland_regions.items())
 
 
 ## operators 
@@ -218,41 +225,35 @@ poland_regions.pop("malopolskie")
 0.5 == True
 1 != -1.0
 
-
 # logical
+a=7 > 7 and 2 > -1
+print(a)
 
-a = 3 < 4
-b = 3 > 4
-
-a
-b
-
-a&b   #and
-a|b   #lub OR
+a=7 > 7 or 2 > -1
+print(a)
 
 
-
-
+a=not(True)
+print(a)
 
 # membership 
 
 pets=['dog','cat','fish']
-
 'fox' in pets
 
-'dog' in pets
+'cat' in pets
 
+'me' in 'disappointment'
 
 ## loops 
 
 list1 = ['a','b','c']
 
-
 for element in list1:
     print(element)
 
-for l in list1:
-    print(l)
+for el in list1:
+    print(el)
 
 
 ## if clause 
@@ -260,22 +261,23 @@ for l in list1:
 a = 33
 b = 33
 
-if a > b:
-    print("ohh no")
-elif a <=b:
-    print("let it be")
-else:
-    print("Year")
+if b > a:
+    print("b is greater than a")
+elif a == b:
+    print("a and b are equal")
+else: 
+    print("a is greater than b")
+
 
 ## functions 
     
+def my_function(a, b):
+    c = a + b
+    return(c)
 
-def mySum(a,b):
-    result = a + b
-    
-    return(result)
+my_function(1, 3)
 
-mySum(5, b = 6)
+
 
 
 ## - pandas, numpy: dataframe, array operations
@@ -284,49 +286,58 @@ mySum(5, b = 6)
 # https://docs.scipy.org/doc/numpy/user/quickstart.html
 import numpy as np 
 
-a1 = np.array([1,2,3])
-a2 = np.array([[1,2,3],
-              [4,5,6]])
+a1 = np.array([1, 2, 3])   # Create a rank 1 array
+type(a1)
+
+a1
+
+a1.shape
+print(a1[0], a1[1], a1[2])   
 
 
+b1 = np.array([[1,2,3],[4,5,6]])
+b1.shape
 
-
-#to jest tabelaryczne przedstawienie gdzi epodajemy wiersz i kolune  czyli a1[wiersz,kolumna]
+print(b1[0, 0], b1[0, 1], b1[1, 0])   
 
 # selection 
 
-a1[0]
-a1[1]
-a1[2]
 
+a3 = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
+a3
 
-a2[0,1]
+b2 = a3[:2, 1:3]
+b2
 
-a2[0:2, 0:1]
 
 # calculations 
 
 x = np.array([[1,2],[3,4]], dtype=np.float64)
 y = np.array([[5,6],[7,8]], dtype=np.float64)
 
-x + y
+print(x)
+print(y)
 
-np.add(x, y)
+print(x + y)
+print(np.add(x, y))
 
-x - y
+print(x - y)
+print(np.subtract(x, y))
 
-np.subtract(x,y)
+print(x * y)
+print(np.multiply(x, y))
 
-x / y
+print(x / y)
+print(np.divide(x, y))
 
-np.divide(x,y)
+print(np.sqrt(x))
 
 
 x = np.array([[1,2],[3,4]])
 
-np.sqrt(x)
-
-x.shape # ile wierszy i kolumn
+print(np.sum(x))
+print(np.sum(x, axis=0)) 
+print(np.sum(x, axis=1)) 
 
 
 ## pandas package
@@ -334,47 +345,61 @@ x.shape # ile wierszy i kolumn
 import pandas as pd
 
 # from list
-
 data1 = [['Alex',10],['Bob',12],['Clark',13]]
 df1 = pd.DataFrame(data1, columns=['Name','Age'])
 
 # from series 
+data2 = {
+    'apples': [3, 2, 0, 1], 
+    'oranges': [0, 3, 7, 2]
+}
 
-
+df2 = pd.DataFrame(data2)
 
 # view top rows 
-
+df2.head()
 
 # info about data 
-
+df2.info()
+df2.describe()
 
 
 # shape / dimension
-
+df2.shape
 
 
 
 # select column from df
+test1 = df2['apples']
+test1 
 
-
+type(test1)
 
 # select columns
 # .loc - locates by name
 # .iloc- locates by numerical index 
 
 # select row from df
-
-
-
+df2.loc[0:1]
+df2.iloc[0:1]
 
 
 data3 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',100]]
 df3 = pd.DataFrame(data3, columns=['City','Sales'])
 
 # column filters
+df3[df3['City'] == "Gdansk"]
 
-df3.columns
+df3[df3['Sales'] >= 100]
+
+df3[(df3['City'] == 'Gdansk') | (df3['City'] == 'Gdynia')]
+
+df3[df3['City'].isin(['Gdansk', 'Gdynia'])]
+
+df3[(df3['City'] == 'Gdansk') & (df3['Sales'] >= 120)]
+
 
 # multi axis selection
 
-
+df3.loc[: , 'City']
+df3.loc[0:1,'City']

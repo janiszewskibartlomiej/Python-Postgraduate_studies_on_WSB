@@ -10,17 +10,12 @@
 # b) Utwórz zmienną y i przypisz do niej wartość 4.0.
 # c) Dodaj obie liczby. Jaki wynik otrzymasz? Jaki jest typ zmiennej wynikowej?
 
-
 x = 3
-
 y = 4.0
 
-z = x+y
-
-#otrzymam float 7.0
-
-type(z)
-
+xy = x + y
+xy
+type(xy)
 
 #--- Exercise 2 -----
 # a) Utwórz zmienną x i przypisz do niej wartość 10.0
@@ -29,28 +24,22 @@ type(z)
 
 
 x = 10.0
-
 y = 4.0
 
-z = x - y
-
-#otrzymam float 6.0
-
-type(z)
+xy = x - y
+xy
+type(xy)
 
 
 #--- Exercise 3 -----
 # a) x = 3.0
 # b) Zmień typ zmiennej x na int.
 
-
 x = 3.0
+type(x)
 
-x = int(x)
-
-print(x, type(x))
-
-
+x1 = int(x)
+type(x1)
 
 #--- Exercise 4 -----
 # a) x = 3
@@ -58,13 +47,11 @@ print(x, type(x))
 # c) Wydrukuj. Co otrzymasz?
  
 x = 3
+type(x)
+x1 = str(x)
 
-x = str(x)
-
-print(x, type(x))
-
-
-
+type(x1)
+x1
 
 
 #--- Exercise 5 -----
@@ -74,13 +61,12 @@ print(x, type(x))
 # d. Co wydrukuje x==y==True? Dlaczego?
 # e. Co wydrukuje x==y==False? Dlaczego?
 
-
 x = 3
 y = 3.0
 
-print(x==y)
-print(x==y==True)
-print(x==y==False)
+x==y
+x==y==True
+x==y==False
 
 
 #--- Exercise 6 -----
@@ -89,105 +75,76 @@ print(x==y==False)
 # c. Utwórz zmienną z i przypisz do niej wartość wyniku operatora porównania zmiennej x i y.
 # d. Używając operatora porównania porównaj z oraz True.
 
-
 x = 3
 y = 3
-z = x==y
+z = x + y
 
-print(z==True)
-
-
+z == True
 
 #--- Exercise 7 -----
 # a. Utwórz zmienną x i przypisz do niej tekst ”3”
 # b. Utwórz zmienną y i przypisz do niej tekst ”4”
 # c. Co wydrukuje x+y?
 
-x = "3"
-y = "4"
+x = '3'
+y = '4'
+z = x + y
 
-print(x+y, type(x+y))
-
+type(z)
 
 #--- Exercise 8 -----
 # a. Utwórz zmienną x i przypisz do niej tekst ”3”
 # b. Utwórz zmienną y i przypisz do niej tekst ”4”
 # c. Dodaj x i y tak, by otrzymać wynik 7 i typ int.
 
-x = "3"
+x = '3'
+y = '4'
+z = int(x) + int(y)
+type(z)
 
-y = "4"
 
-x, y = int(x), int(y)
-
-z = x + y
-
-print(z, type(z))
 
 #--- Exercise 8 -----
 # a. utwórz funkcję, która wydrukuje bilet poprzez połączenie imienia poniższych zmiennych. 
-
 name = "Jan"
 surname = "Kowalski"
 
-def bilet():
-    x = print(name, surname)
-    return x
+def drukuj_bilet(imie, nazwisko, obywatelstwo=''): 
+    return imie + " " + nazwisko + ", " + str(obywatelstwo)
 
-bilet()
+drukuj_bilet(name, surname)
 
-
-def moj(name, surname, sep = " "):
-    bilet = name + sep + surname
-    return bilet
-
-bilet(name=name, syrname = surname)
 
 #--- Exercise 9 -----
-# Utwórz listę o nazwie my_list i dodaj do niej następujące elementy: 1, 3.1, ”a”, False.
-
-my_list = []
-
+# Utwórz listę o nazwie my_list i dodaj do nie następujące elementy: 1, 3.1, ”a”, False.
 my_list = [1, 3.1, "a", False]
- 
-dane = (1, 3.1, "a", False)
-
-for x in dane:
-    my_list.append(x)
-    
-    
-print(my_list)
-
+my_list
 
 #--- Exercise 10 -----
 # Wydrukuj drugi element listy.
-my_list2 = [1,2,3]
+my_list2 = [1,2,3,4,5]
 
-print(my_list2[1])
-
-
+my_list2[1]
 
 #--- Exercise 11 -----
 #Wydrukuj liczbę elementów w liście my list2.
 
 len(my_list2)
 
-
-
 #--- Exercise 12 -----
 # Wydrukuj pierwsze 3 elementy listy my_list2
 
-print(my_list2[0:3])
+my_list2[:3]
 
 
 #--- Exercise 13 -----
 # Dołącz do list1 liste nr 2
 
-nowa_lista = my_list + my_list2
+list1 = [1,2,3]
+list2 = [4,5,6]
 
-nowa_lista += my_list2
-
-print(nowa_lista)
+list1 += list2
+print(list1)
 
 
 #--- Exercise 14 -----
@@ -209,25 +166,26 @@ input = [
 [33, 'dsf'],
 [23, 'dsf']]
 
-
-
 ## method 1 - with numpy
+import numpy as np
 
 input1 = np.array(input)
-x = input1[:, 0]
+input1
 
-np.sum(x.astype(int))
+input2 = input1[: , 0]
+
+np.sum(input2.astype(int))
 
 
 
 ## method 2 - basic method
+suma_kolumny_pierwszej = 0
+for el in input:
+    #print(el)
+    suma_kolumny_pierwszej += el[0]
+print(suma_kolumny_pierwszej)
 
-suma = 0
 
-for x in input:
-    suma += x[0]
-    
-print(suma)
 
 ############################
 
@@ -240,30 +198,29 @@ df_shops = pd.DataFrame(data_shops, columns=['City','Sales', 'Shops'])
 # Wybierz sklepy Lidl z ramki danych df_shops.
 # Choose Lidl show from df_shops data frame.
 
-lidl = [x for x in data_shops if x[2] == 'Lidl']
-print(lidl)
+df_shops[df_shops['Shops'] == 'Lidl']
 
 #--- Exercise 17 -----
 # Sprawdz gdzie sprzedaz byla wieksza niz 150 (df_shops).
 # Check where sales is higher than 150 (df_shops).
 
-sell_150 = [x for x in data_shops if x[1] > 150]
+df_shops[df_shops['Sales'] > 150]
 
 #--- Exercise 18 -----
 # Sprawdz w ktorych sklepach w Gdansku i Sopocie sprzedaz przewyzszyla kwote 140. (df_shops)
 # Check in what shops in Gdansk and Sopot sales is higher than 140.
  
-gd_sop = [x for x in data_shops if x[0] in ['Sopot', 'Gdynia'] and x[1]>140]
+df_shops[ (df_shops['Sales'] > 150) & (df_shops['City'].isin(['Gdansk','Sopot']))]
 
 #--- Exercise 19 -----
 # Wybierz wszystkie sklepy oprocz sopockich.
 # Choose all shops except Sopot.
 
-del_sop = [x for x in data_shops if x[0] != 'Sopot']
+df_shops[ -df_shops['City'].isin(['Sopot'])]
 
 
 #--- Exercise 20 -----
 # Wybierz wszystkie sklepy Lidl w Gdansku i Sopocie, w ktorych sprzedaz byla wieksza niz 100 oraz mniejsza niz 210
 # Choose all Lidl shops in Gdansk and Sopot where sales is higher than 100 and lower than 210.
 
-lidl_gd_sop_100 = [x for x in data_shops if x[0] in ['Gdansk','Sopot'] and x[2] == 'Lidl' and 210 > x[1] > 100]
+df_shops[ (df_shops['Sales'] > 100) & (df_shops['Sales'] < 210) & (df_shops['City'].isin(['Gdansk','Sopot'])) & (df_shops['Shops'].isin(['Lidl'])) ]
