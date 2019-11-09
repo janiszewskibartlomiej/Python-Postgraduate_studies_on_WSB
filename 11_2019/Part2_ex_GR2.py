@@ -35,13 +35,27 @@ metadata2 = pd.read_excel("D:\\GITHUB\\Python-Postgraduate_studies_on_WSB\\11_20
 # name columns in data frame loaded in ex 3
 # nadaj nazwy kolumn ramce danych zaladowanej z zadania nr 3
 
-
+metadata2.columns = [ 'Dane', 'Data', 'Value' ]
 
 #----- ex 5 ------
 # connect to SampleDb2.db and list all available tables in the database
 # podlacz sie do bazy SampleDb2.db oraz wylistuj wszystkie dostepne tablice w bazie
 
 from sqlalchemy import create_engine
+from sqlalchemy import inspect
 
+db_uri = 'sqlite:///11_2019//SampleFiles//sampleDB2.db'
+engine = create_engine(db_uri)
 
+inspector = inspect(engine)
 
+# Get table information
+table_info = inspector.get_table_names()
+print(table_info)
+
+# Get column information
+column_info = inspector.get_columns('Obs')
+column_info2 = inspector.get_columns('Metadane')
+print(column_info, "\n", column_info2)
+
+data_column1 = pd.DataFrame(column_info)

@@ -126,6 +126,7 @@ for column in df_json.columns:
     
 result = result.reset_index()
 result = result.iloc[:, 2:4]
+
 #tst3 = df_json['dogs'].apply(my_apply)
 
 
