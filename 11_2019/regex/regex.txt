@@ -1,0 +1,63 @@
+# pierwsze 3 znaki od poczatku lini.
+
+Ala ma kota.
+
+# ostatni znak lini
+
+Ala ma kota?
+
+# kod pocztowy 
+
+81-123
+251-89
+12-787
+123245
+
+
+# pliki .pdf lub .xlsx
+
+sample_file.pdf
+cos.docx
+metadane.xlsx
+stats.pdf
+
+# slowa zaczynajace sie duza litera
+
+John Doe
+Adam Kowalski
+Ala ma kota
+to nie jest prawdziwe zdanie. 
+bla, bla, bla
+
+
+# wszystkie znaki spacji
+
+John Doe
+Adam Kowalski
+Ala ma kota
+to nie jest prawdziwe zdanie. 
+bla, bla, bla
+
+# zdania pytajace
+
+Kiedy bedzie koniec zajec?
+Ktora godzina?
+Ala ma kota
+Dzisiaj jest niedziela.
+
+# date w formacie yyyy-mm-dd lub yyyy/mm/dd
+
+2018-10-01
+18-05-03
+15 May 2018
+1966/05/02
+ 
+
+# adres email 
+
+adam.kowalski@wp.pl
+!toNieJest@@email..com
+Abc.example.com
+just"not"right@example.com
+example-indeed@strange-example.com
+john..doe@example.com

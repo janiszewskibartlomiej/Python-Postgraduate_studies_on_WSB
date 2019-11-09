@@ -13,10 +13,15 @@ os.chdir('D:\\Python_learning\\Python_WSB')
 
 import pandas as pd
 
+metadata = pd.read_csv("D:\\GITHUB\\Python-Postgraduate_studies_on_WSB\\11_2019\\SampleFiles\\Sample2.txt",
+                       sep="|",
+                       header = None)
 
 #---- ex 2 -------
 # name columns in data frame loaded in ex 1
 # nadaj nazwy kolumn ramce danych zaladowanej z zadania nr 1
+
+metadata.columns = ['ID', 'ObsDate', 'Value', 'RelDate']
 
 
 #----- ex 3 ------
@@ -24,7 +29,7 @@ import pandas as pd
 # zaladuj plik Obs2.xlsx do ramki danych 
 
 
-
+metadata2 = pd.read_excel("D:\\GITHUB\\Python-Postgraduate_studies_on_WSB\\11_2019\\SampleFiles\\Obs2.xlsx")
 
 #---- ex 4 --------------------------
 # name columns in data frame loaded in ex 3

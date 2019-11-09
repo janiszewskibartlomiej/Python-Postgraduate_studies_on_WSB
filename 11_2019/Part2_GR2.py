@@ -8,18 +8,25 @@ import os
 
 # set working directory
 
-
+os.chdir("D:\GITHUB\Python-Postgraduate_studies_on_WSB")
 
 
 #---- load csv ----
 
-
+metadata = pd.read_csv("11_2019\SampleFiles\Metadane1.csv")
 
 #---- load txt ----
 
+obs = pd.read_csv("11_2019\SampleFiles\Sample.txt",
+                  sep = "\t",
+                  header = None)
 
+obs.columns = ['ID', 'ObsDate', 'Value', 'RelDate']
 
 #--- load xls(x) ----
+
+metadata1 = pd.read_excel("11_2019\SampleFiles\Metadane1.xlsx",
+                          sheet_name = "Metadane1")
 
 
 #---- db connection -----
@@ -31,14 +38,25 @@ from sqlalchemy import create_engine
 ## SQLite
 
 
+
 # STEP 1: connect to db
 
+engine = create_engine('sqlite:///11_2019//SampleFiles//sampleDB.db')
+
+
 # STEP 2: Declare what to retrive from db. SQL query
+
+myQuery = "select * from Obs"
 
 
 # STEP 3a: Connect to db and retrive data (write own query)
 
+Obs_from_sql = pd.read_sql_query(myQuery, engine)
+
 # STEP 3b: Connect to db and retrive data (get whole table)
+
+Obs_from_sql2 = pd.read_sql_table("Obs", engine)
+
 
 # Write data to DB
 #new_df.to_sql('Obs', engine)
@@ -54,7 +72,7 @@ engine = create_engine('oracle://username:password@127.0.0.1:1521/sidname')
 engine = create_engine('mssql+pyodbc://mydsn')
 engine = create_engine('sqlite:///foo.db')
 # or absolute, starting with a slash:
-engine = create_engine('sqlite:////absolute/path/to/foo.db')
+engine = create_engine('sqlite:///absolute/path/to/foo.db')
 
 
 
@@ -67,16 +85,16 @@ df_from_page = get_web_page[0]
 ### from file 
 
 #import pandas as pd 
-import xml.etree.ElementTree as et 
+import xml.etree.ElementTree as et #dzieli nam na drzewa i pratrzy jakie sa liscie - jak jest struktura
     
 xtree = et.parse("SampleFiles//sampleXML.xml")
 xroot = xtree.getroot() 
 
-df_cols = ["TITLE", "ARTIST", "COUNTRY", "COMPANY", "PRICE", "YEAR"]
-out_df = pd.DataFrame(columns = df_cols)
+df_cols = ["TITLE", "ARTIST", "COUNTRY", "COMPANY", "PRICE", "YEAR"]  #nadaje tytuly kolumn
+out_df = pd.DataFrame(columns = df_cols) #buduje ramke danych
 
 for node in xroot: 
-    s_title = node.find("TITLE").text
+    s_title = node.find("TITLE").text  #od rzewa znajdzi tytut i przypisz do s_title
     s_artist = node.find("ARTIST").text
     s_country = node.find("COUNTRY").text
     s_company = node.find("COMPANY").text
@@ -101,7 +119,7 @@ def my_apply(x):
     output = pd.DataFrame.from_dict(x, orient ='index').T
     return(output.iloc[0])
 
-result = pd.DataFrame()
+result = pd.DataFrame()  #ramka danych
 for column in df_json.columns:
     new_df = df_json[column].apply(my_apply)
     result = result.append(new_df)

@@ -338,34 +338,54 @@ import pandas as pd
 data1 = [['Alex',10],['Bob',12],['Clark',13]]
 df1 = pd.DataFrame(data1, columns=['Name','Age'])
 
-# from series 
+data1 = [['Kasia', 10],
+         ['Krzys', 12],
+         ['Ala', 12]]
 
+df1 = pd.DataFrame(data1,
+                   columns = ['Name', 'Age'])
 
+# from dict
+
+data2 = {'apples':[3,10,15,8],
+         'oranges':[1,2,3,4],
+         'mango': [1,10,20,14]} 
+
+df2 = pd.DataFrame(data2)
 
 # view top rows 
 
 
+df2.head(2)
+
 # info about data 
+
+df2.info()
+df2.describe()
 
 
 
 # shape / dimension
 
-
+df2.shape
 
 
 # select column from df
 
-
+df2[['oranges', 'apples']]
 
 # select columns
-# .loc - locates by name
-# .iloc- locates by numerical index 
+# .loc - locates by name   name location
+# .iloc- locates by numerical index index location
+
+df2.loc[:, ['oranges', 'apples']]
+
+df2.iloc[:, 0:2]
 
 # select row from df
 
 
-
+df2.loc[0:1, ['oranges', 'apples']]
 
 
 data3 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',100]]
@@ -373,8 +393,12 @@ df3 = pd.DataFrame(data3, columns=['City','Sales'])
 
 # column filters
 
-df3.columns
+df3.loc[:,['City']]
 
 # multi axis selection
 
+df3[df3['City']=='Sopot']
 
+df3[(df3['City']=='Sopot') | (df3['City'] == 'Gdansk')]
+
+df3[df3['City'].isin(['Sopot', 'Gdansk'])]

@@ -243,11 +243,17 @@ df_shops = pd.DataFrame(data_shops, columns=['City','Sales', 'Shops'])
 lidl = [x for x in data_shops if x[2] == 'Lidl']
 print(lidl)
 
+df_shops[df_shops['Shops'] == 'Lidl']
+
+
 #--- Exercise 17 -----
 # Sprawdz gdzie sprzedaz byla wieksza niz 150 (df_shops).
 # Check where sales is higher than 150 (df_shops).
 
 sell_150 = [x for x in data_shops if x[1] > 150]
+
+df_shops[df_shops['Sales'] > 150]
+
 
 #--- Exercise 18 -----
 # Sprawdz w ktorych sklepach w Gdansku i Sopocie sprzedaz przewyzszyla kwote 140. (df_shops)
@@ -255,15 +261,25 @@ sell_150 = [x for x in data_shops if x[1] > 150]
  
 gd_sop = [x for x in data_shops if x[0] in ['Sopot', 'Gdynia'] and x[1]>140]
 
+df_shops[(df_shops['City'].isin(['Gdansk','Sopot'])) & (df_shops['Sales'] > 140) ]
+
+
 #--- Exercise 19 -----
 # Wybierz wszystkie sklepy oprocz sopockich.
 # Choose all shops except Sopot.
+#~~ to jest negacja 
+
 
 del_sop = [x for x in data_shops if x[0] != 'Sopot']
 
+df_shops[df_shops['City'] != 'Sopot']
+
+df_shops[~df_shops['City'].isin(['Sopot'])]
 
 #--- Exercise 20 -----
 # Wybierz wszystkie sklepy Lidl w Gdansku i Sopocie, w ktorych sprzedaz byla wieksza niz 100 oraz mniejsza niz 210
 # Choose all Lidl shops in Gdansk and Sopot where sales is higher than 100 and lower than 210.
 
 lidl_gd_sop_100 = [x for x in data_shops if x[0] in ['Gdansk','Sopot'] and x[2] == 'Lidl' and 210 > x[1] > 100]
+
+df_shops[(df_shops['City'].isin(['Gdansk','Sopot'])) & (df_shops['Shops'] == 'Lidl')  & ((df_shops['Sales'] > 100) & (df_shops['Sales'] < 210)) ]
