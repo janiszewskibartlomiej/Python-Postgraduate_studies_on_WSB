@@ -5,7 +5,7 @@
 #######################
 import os 
 
-os.chdir('D:\\Python_learning\\Python_WSB')
+os.chdir('D:\GITHUB\Python-Postgraduate_studies_on_WSB')
 
 #---- ex 1 -------
 # load file Sample1.txt to data frame

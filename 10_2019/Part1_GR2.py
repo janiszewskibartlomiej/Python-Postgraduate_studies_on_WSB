@@ -217,7 +217,7 @@ poland_regions.pop("malopolskie")
 0 == False
 0.5 == True
 1 != -1.0
-
+0.1 == False
 
 # logical
 
@@ -291,7 +291,7 @@ a2 = np.array([[1,2,3],
 
 
 
-#to jest tabelaryczne przedstawienie gdzi epodajemy wiersz i kolune  czyli a1[wiersz,kolumna]
+#to jest tabelaryczne przedstawienie gdzie podajemy wiersz i kolune  czyli a2[wiersz,kolumna]
 
 # selection 
 
@@ -302,7 +302,7 @@ a1[2]
 
 a2[0,1]
 
-a2[0:2, 0:1]
+test = a2[0:2, 0:1]
 
 # calculations 
 
@@ -335,70 +335,73 @@ import pandas as pd
 
 # from list
 
-data1 = [['Alex',10],['Bob',12],['Clark',13]]
+data1 = [['Alex',10],
+         ['Bob',12],
+         ['Clark',13]]
+
 df1 = pd.DataFrame(data1, columns=['Name','Age'])
 
-data1 = [['Kasia', 10],
+data2 = [['Kasia', 10],
          ['Krzys', 12],
          ['Ala', 12]]
 
-df1 = pd.DataFrame(data1,
+df2 = pd.DataFrame(data1,
                    columns = ['Name', 'Age'])
 
 # from dict
 
-data2 = {'apples':[3,10,15,8],
+data3 = {'apples':[3,10,15,8],
          'oranges':[1,2,3,4],
          'mango': [1,10,20,14]} 
 
-df2 = pd.DataFrame(data2)
+df3 = pd.DataFrame(data2)
 
 # view top rows 
 
 
-df2.head(2)
+df3.head(2)
 
 # info about data 
 
-df2.info()
-df2.describe()
+df3.info()
+df3.describe()
 
 
 
 # shape / dimension
 
-df2.shape
+df3.shape
 
 
 # select column from df
 
-df2[['oranges', 'apples']]
+df3[['oranges', 'apples']]
 
 # select columns
 # .loc - locates by name   name location
 # .iloc- locates by numerical index index location
 
-df2.loc[:, ['oranges', 'apples']]
+df3.loc[:, ['oranges', 'apples']]
 
-df2.iloc[:, 0:2]
+df3.iloc[:, 0:2]
 
 # select row from df
 
 
-df2.loc[0:1, ['oranges', 'apples']]
+df3.loc[0:1, ['oranges', 'apples']]
 
 
-data3 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',100]]
-df3 = pd.DataFrame(data3, columns=['City','Sales'])
+data4 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',100]]
+df4 = pd.DataFrame(data4, columns=['City','Sales'])
 
 # column filters
 
-df3.loc[:,['City']]
+df4.loc[:,['City']]
 
 # multi axis selection
 
-df3[df3['City']=='Sopot']
+df4[df4['City']=='Sopot']
 
-df3[(df3['City']=='Sopot') | (df3['City'] == 'Gdansk')]
+df4[(df4['City']=='Sopot') | (df4['City'] == 'Gdansk')]
 
-df3[df3['City'].isin(['Sopot', 'Gdansk'])]
+df4[df4['City'].isin(['Sopot', 'Gdansk'])]

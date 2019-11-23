@@ -213,11 +213,17 @@ input = [
 
 ## method 1 - with numpy
 
+import numpy as np
+
 input1 = np.array(input)
 x = input1[:, 0]
 
 np.sum(x.astype(int))
 
+sum(x.astype(int))
+
+
+np.sum(x)
 
 
 ## method 2 - basic method

@@ -87,7 +87,7 @@ df_from_page = get_web_page[0]
 #import pandas as pd 
 import xml.etree.ElementTree as et #dzieli nam na drzewa i pratrzy jakie sa liscie - jak jest struktura
     
-xtree = et.parse("SampleFiles//sampleXML.xml")
+xtree = et.parse("11_2019//SampleFiles//sampleXML.xml")
 xroot = xtree.getroot() 
 
 df_cols = ["TITLE", "ARTIST", "COUNTRY", "COMPANY", "PRICE", "YEAR"]  #nadaje tytuly kolumn
@@ -110,7 +110,7 @@ for node in xroot:
 
 	
 #---- load json -----
-df_json = pd.read_json("SampleFiles//sampleJSON.json")
+df_json = pd.read_json("11_2019//SampleFiles//sampleJSON.json")
     
 #tst = df_json.loc[0, 'dogs']
 #tst2 = pd.DataFrame.from_dict(tst, orient ='index').T
@@ -126,7 +126,7 @@ for column in df_json.columns:
     
 result = result.reset_index()
 result = result.iloc[:, 2:4]
-
+print(result)
 #tst3 = df_json['dogs'].apply(my_apply)
 
 
