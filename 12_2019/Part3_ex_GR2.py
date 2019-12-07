@@ -6,12 +6,16 @@
 import pandas as pd
 import os 
 
-os.chdir('D:\\Python_learning\\Python_WSB')
+os.chdir('D:\\GITHUB\\Python-Postgraduate_studies_on_WSB\\12_2019')
 
 
 #------ ex 1 -------
 # from weather data select vacation time (July-August) and select only EWR origin.
 # z danych pogodowyc wybierz okres wakacyjny obserwacji i wybierz dane tylko dla EWR (Newark) 
+
+weather = pd.read_csv("SampleFiles\\weather.csv")
+
+df1 = weather.query("month in [7,8] AND origin == 'EWR'")
 
 
 
@@ -23,8 +27,12 @@ os.chdir('D:\\Python_learning\\Python_WSB')
 #------ ex 3 -------
 # check average  delay for each carrier.
 # policz srednie  opoznienie samolotow dla poszczegolnych przewoznikow.
+flights = pd.read_csv("SampleFiles\\flights.csv")
 
-
+ex3 = (flights
+       .filter(['carrier', 'arr_delay'])
+       .groupby('carrier')
+       .mean())
 
 #------ ex 4 -------
 # join metadata and obseravations tables (from part 2)
@@ -136,8 +144,13 @@ df13 = pd.DataFrame({'Address': [ " 12358 ul. Armii Krajowej 47, 00-252 Warszawa
                                 " 98786 AL. Jana Pawla II 456, 80-987 Gdansk; Anna Nowak" ,
                                 "13258 Plac wyzwolenia 950, 12-547 Wroclaw; Jan Maria Tomaszewski"] })
 
+df13['kod pocztowy'] = df13['Address'].str.extract('([0-9]{2}-[0-9]{3})', expand = False)
 
+df13['imie i nazwisko'] = df13['Address'].str.extract('([A-Za-z ]*)$', expand = False)
 
+df13['ulica_tmp'] = df13['Address'].str.replace('([0-9]+)', '' )
+
+df13['ulica'] = df13['ulica_tmp'].str.replace('(,.+$)','')
 
 
 #------ ex 14 -------
