@@ -1,0 +1,380 @@
+---
+title: "Python - Powtórka"
+output:
+  html_notebook: default
+  word_document: default
+---
+```{r, include=FALSE}
+
+library(reticulate)
+use_condaenv()
+
+```
+
+
+### Pytanie 1 
+
+Jaką funkcję należy użyc aby załadować plik csv do ramki danych? 
+
+1. pd.read_csv()
+2. pd.readCsv() 
+3. pd.read.csv() 
+4. pd.csv.read() 
+
+
+### Pytanie 2
+
+Wybierz bibliotekę służącą do operacji na ramkach danych oraz przekształcania danych (data wrangling).
+
+1. numpy
+2. pandas
+3. sklearn
+4. xml
+
+### Pytanie 3 
+
+Jaki będzie rezultat wywołania poniższej funkcji? 
+
+```{python message=FALSE, warning=FALSE, eval=TRUE}
+
+def SampleFunction(a, b):
+    a = 3
+    c = a + b
+    return(c)
+
+
+SampleFunction(a= 2, b = 3)
+
+```
+
+
+1. 4
+2. 5
+3. 6
+4. 7
+
+### Pytanie 4 
+
+Która z poniższych bibliotek nie służy do wykonywania wykresów? 
+
+1. matplotlib
+2. plotly
+3. numpy
+4. Żadna z powyższych.
+
+### Pytanie 5
+
+Co będzie rezultatem wykonania poniższej lini kodu? 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+x = ["a", "b", "c", "d"]
+y = ["w", "x", "y", "z"]
+
+
+x + y
+
+```
+
+1. "a;w","b;x","c;y","d;z"
+2. "a%%w%%b%%x%%c%%y%%d%%z"
+3. ['a', 'b', 'c', 'd', 'w', 'x', 'y', 'z']
+4. "a%%w" "b%%x" "c%%y" "d%%z"
+
+
+### Pytanie 6 
+
+Jaki kod należy wpisać aby wybrać rekord z 2giego wiersza i 3ciej kolumny z poniższej ramki danych?
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+
+import pandas as pd
+
+
+data1 = [['Gdansk', 10, 100], ['Sopot',12, 345], ['Gdynia', 20, 500]]
+SampleDF = pd.DataFrame(data1, columns=['City', 'Sales', 'Income'])
+
+
+```
+
+
+1. SampleDF[,2]
+2. Df1.iloc[2,3]
+3. SampleDF.iloc[2,3]
+4. SampleDF.iloc[1,2]
+
+### Pytanie 7 
+
+Jaki rodzaj wykresu będzie rezultatem poniższego kodu? 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+import matplotlib.pyplot as plt
+
+eco1 = pd.DataFrame({'HPI':[80,85,88,85],
+                    'Int_rate':[2, 3, 2, 2],
+                    'US_GDP_Thousands':[50, 55, 65, 55],
+                   'Year' : [2001, 2002, 2003, 2004]})
+
+eco1['Year'] = eco1['Year'].astype(str) 
+
+plt.plot(eco1['Year'], eco1['US_GDP_Thousands'])
+
+```
+
+1. Scatter
+2. Line
+3. Histogram
+4. Map
+
+### Pytanie 8 
+
+Jaki typ(y) danych będzie / będą zapisane w poniższym wektorze? 
+
+```{python}
+SampleVec = [1, "bla", True]
+
+```
+
+1. numeric, character, logical
+2. character
+3. numeric, character
+4. numeric
+
+### Pytanie 9
+
+Jaka jest różnica miedzy metodą "loc" a "iloc" w ramkach danych?
+
+1. loc słóży do wyboru elementów na podstawie indeksów wierszy/kolumn, a iloc na podstawie nazw wierszy/kolumn. 
+2. iloc słóży do wyboru elementów na podstawie indeksów wierszy/kolumn, a loc na podstawie nazw wierszy/kolumn. 
+3. Nie ma żadnej różnicy.
+4. Żadne z powyższych. 
+
+### Pytanie 10 
+
+Która z poniższych lini kodu wybierze rekord(y) gdzie sprzedaż jest większa od 200 i mniejsza od 400. 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+
+
+SampleDF = pd.DataFrame({'City':["Gdansk", "Gdynia", "Sopot", "Gdansk", "Gdynia", "Sopot", "Sopot", "Gdansk"],
+                    'Sales':[500, 400, 200, 400, 200, 250, 200, 100],
+                    'Employees':[6, 4, 1, 6, 4, 1, 2, 3]})
+
+SampleDF
+
+```
+
+
+1. SampleDF.query("Sales > 200 & Sales < 400")
+2. SampleDF.query("Sales > 200 | Sales < 400")
+3. SampleDF.query("Sales >= 200 & Sales =< 400")
+4. SampleDF.query("Sales > 200 %and% Sales < 400")
+
+
+### Pytanie 11 
+
+Jaki będzie rezultat poniższej lini kodu:
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+
+x = [1,2,3]
+a,b,c = x
+
+```
+
+
+1. usuniemy listę x 
+2. każdy obiekt a, b, c będzie skłądać z listy [1,2,3]  
+3. do obiektów a, b, c zostaną odpowiednio przypisane wartości 1,2,3
+4. żadne z powyższych
+
+
+### Pytanie 12 
+
+Jeżeli w ramce danych są dostępne następujące kolumny: 
+"name", "year", "month", "day", "hour" 
+
+Co wywoła poniższy kod?
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+import pandas as pd
+
+
+date1 = pd.Series(pd.date_range('2012-1-1 12:00:00', periods=7, freq='M'))
+date2 = pd.Series(pd.date_range('2013-3-11 21:45:00', periods=7, freq='W'))
+ 
+dates_df = pd.DataFrame(dict(Start_date = date1, End_date = date2))
+
+
+dates_df['YM'] = dates_df['Start_date'].map(lambda x: x.month).apply(str) + "-" + dates_df['Start_date'].map(lambda x: x.year).apply(str) 
+
+dates_df
+
+
+```
+
+1. Zostaną wybrane wiersze, które są w formacie "m-yyyy".
+2. Zastąpi obecna kolumnę "Start_date", która będzie składać się roku orazmiesiąca.
+3. Utworzy nową kolumnę "YM", która będzie składać się roku, miesiąca oraz dnia.
+4. Żadne z powyższych.
+
+### Pytanie 13 
+
+Jeżeli dzisiaj jest 13 grudnia 2018, to co będzie wynikiem wywałania poniższej lini kodu? 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+import pandas as pd 
+
+t = pd.datetime.now()
+
+t1 = pd.datetime.strptime('2018-11-10', "%Y-%m-%d")
+
+t2 = t - t1
+t2.days // 30
+```
+
+
+1. -33
+2. 33
+3. -1
+4. 1
+
+
+### Pytanie 14 
+
+Co bedzię rezultatem wywołania poniższych lini kodu?
+
+```{python}
+import pandas as pd
+
+day = [1, 1, 2, 2, 3, 3]
+hour = [8, 16, 8, 16, 8, 16]
+profit = [100, 200, 50, 60, None, None]
+
+
+shopData = pd.DataFrame(list(zip(day, hour, profit)), columns = ["day", "hour", "profit"])
+shopData
+
+shopData['profit']= shopData.profit.fillna(shopData.profit.median())
+
+```
+
+1. Wszystkie rekordy w kolumnie profit zostaną zamienione na NA.   
+2. Rekordy NA będą zastąpione średnią arytmetyczną wartości całej kolumny profit.
+3. Rekordy NA będą zastąpione madianą wartości całej kolumny profit.
+4. Rekordy, które nie są NA będą zastąpione medianą wartości całej kolumny profit.
+
+
+### Pytanie 15 
+
+Co wywołają poniższe linie kodu? 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+day = [1, 1, 2, 2, 3, 3]
+hour = [8, 16, 8, 16, 8, 16]
+profit = [100, 200, 50, 60, None, None]
+
+shopData = pd.DataFrame(list(zip(day, hour, profit)), columns = ["day", "hour", "profit"])
+
+
+x = shopData['hour']
+y = shopData['profit']
+
+plt.scatter(x, y)
+
+
+
+
+```
+
+
+1. W zakładce plot pojawi się kompletny wykres (tło ze skalą, wykres liniowy oraz podpisane osie).
+2. W zakładce plots pojawi się zarys wykresu (tło ze skalą oraz podpisane osie).
+3. W zakładce plot pojawi się kompletny wykres (tło ze skalą, wykres punktowy oraz podpisane osie).
+4. Żaden wykres nie zostanie wyświetlony. 
+
+
+### Pytanie 16
+
+Co pojawi się na ekranie (w konsoli) po wywyłaniu poniższej lini kodu: 
+
+```{python message=FALSE, warning=FALSE, eval=FALSE}
+
+y = list(range(9))
+
+for i in y:
+  print(i)
+
+
+
+
+```
+
+
+1. Wektor wypełniony wartościami od 1 do 9.
+2. Wektor wypełniony wartościami od 8 do 0.
+3. 10 pojedynczych elementów (wektorów jednoelementowych) z wartościami od 0 do 8.
+4. 10 pojedynczych elementów (wektorów jednoelementowych) z wartościami od 1 do 9.
+
+### Pytanie 17 
+
+Która z poniższych metod służy do ładowania plików xlsx do ramki danych? 
+
+1. pd.read_xlsx
+2. pd.read_excel
+3. excel.read
+4. xlsx_read
+
+
+### Pytanie 18
+
+Jaką funkcje należy wstawić w "__" aby usunąć z ramki danych kolumny "month" i "carrier".
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+
+
+flights_s1 = flights.__([ 'month', 'carrier'], axis = 1)
+
+
+
+```
+
+1. drop
+2. remove
+3. purge
+4. pop
+
+
+### Pytanie 19 
+
+Jakich funkcji / kroków użyjesz aby zbudować podsumowanie (agregacje) dla poszczególnych miast z poniższej ramki danych?
+
+
+```{python}
+
+
+data3 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',100]]
+
+df3 = pd.DataFrame(data3, columns=['City','Sales'])
+
+
+```
+
+1. df3.groupby(['City']).agg(['mean', 'size', 'sum'])
+2. df3.agg(['mean', 'size', 'sum'].groupby(['City']))
+3. mydf.groupby(['City']).agg(['mean', 'size', 'sum'])
+4. df3.agg(['mean', 'size', 'sum'])
+
+### Pytanie 20 
+
+Który z poniższy kodów zwróci błąd (error)? 
+
+
+1. flights.query("year == 2013 and month == 1 and day == 1")
+2. flights.query("year == 2013 & month == 1 & day == 1")
+3. flights.query(" year == 2013 | month == 1 | day == 1 ")
+4. flights.query(" year = 2013 | month = 1 | day = 1 ")
+
