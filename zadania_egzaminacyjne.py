@@ -70,14 +70,6 @@ SampleDF.iloc[1,2]
 
 
 
-import pandas as pd
-
-
-data1 = [['Gdansk', 10, 100], ['Sopot',12, 345], ['Gdynia', 20, 500]]
-SampleDF = pd.DataFrame(data1, columns=['City', 'Sales', 'Income'])
-
-
-
 ### Pytanie 7 
 
 #Jaki rodzaj wykresu będzie rezultatem poniższego kodu? 
