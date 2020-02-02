@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jan 25 23:44:53 2020
-
-@author: janis
-"""
 import pandas as pd
 
 
@@ -37,7 +31,11 @@ pd.read_csv()
 ### Pytanie 4 
 
 #Która z poniższych bibliotek nie służy do wykonywania wykresów? 
-    
+1. matplotlib
+2. plotly
+3. numpy  <--
+4. Żadna z powyższych.
+
 # numpy
     
 
@@ -67,14 +65,6 @@ data1 = [['Gdansk', 10, 100], ['Sopot',12, 345], ['Gdynia', 20, 500]]
 SampleDF = pd.DataFrame(data1, columns=['City', 'Sales', 'Income'])
 
 SampleDF.iloc[1,2]
-
-
-
-import pandas as pd
-
-
-data1 = [['Gdansk', 10, 100], ['Sopot',12, 345], ['Gdynia', 20, 500]]
-SampleDF = pd.DataFrame(data1, columns=['City', 'Sales', 'Income'])
 
 
 
@@ -168,6 +158,10 @@ dates_df['YM'] = dates_df['Start_date'].map(lambda x: x.month).apply(str) + "-" 
 
 dates_df
 
+1. Zostaną wybrane wiersze, które są w formacie "m-yyyy".
+2. Zastąpi obecna kolumnę "Start_date", która będzie składać się roku orazmiesiąca.
+3. Utworzy nową kolumnę "YM", która będzie składać się roku, miesiąca oraz dnia.
+4. Żadne z powyższych.  <--
 
 #Żadne z powyższych.
 
@@ -187,6 +181,11 @@ t1 = pd.datetime.strptime('2018-11-10', "%Y-%m-%d")
 t1
 t2 = tmoje - t1
 t2.days // 30
+
+1. -33
+2. 33
+3. -1
+4. 1   <--
 
 #1
 
@@ -247,8 +246,12 @@ for i in y:
 
 #Która z poniższych metod służy do ładowania plików xlsx do ramki danych? 
 
+1. pd.read_xlsx
+2. pd.read_excel  <--
+3. excel.read
+4. xlsx_read
 
-pd.read_excel
+#pd.read_excel
 
 
 ### Pytanie 18
@@ -257,6 +260,11 @@ Jaką funkcje należy wstawić w "__" aby usunąć z ramki danych kolumny "month
 
 
 flights_s1 = flights.__([ 'month', 'carrier'], axis = 1)
+
+1. drop  <--
+2. remove
+3. purge
+4. pop
 
 #drop
 
@@ -273,7 +281,12 @@ data3 = [['Gdynia',100],['Gdansk',120],['Sopot',130], ['Gdynia',90], ['Gdansk',1
 df3 = pd.DataFrame(data3, columns=['City','Sales'])
 
 
-df3.groupby(['City']).agg(['mean', 'size', 'sum'])
+1. df3.groupby(['City']).agg(['mean', 'size', 'sum'])  <--
+2. df3.agg(['mean', 'size', 'sum'].groupby(['City']))
+3. mydf.groupby(['City']).agg(['mean', 'size', 'sum'])
+4. df3.agg(['mean', 'size', 'sum'])
+
+#df3.groupby(['City']).agg(['mean', 'size', 'sum'])
 
 
 ### Pytanie 20 
@@ -288,8 +301,9 @@ os.chdir('D:\\GITHUB\\Python-Postgraduate_studies_on_WSB')
 flights = pd.read_csv("01_2020\\flights.csv")
 
 
-#1. flights.query("year == 2013 and month == 1 and day == 1")
-#2. flights.query("year == 2013 & month == 1 & day == 1")
-#3. flights.query(" year == 2013 | month == 1 | day == 1 ")
+1. flights.query("year == 2013 and month == 1 and day == 1")
+2. flights.query("year == 2013 & month == 1 & day == 1")
+3. flights.query(" year == 2013 | month == 1 | day == 1 ")
+4. flights.query(" year = 2013 | month = 1 | day = 1 ")  <--
 
-4. flights.query(" year = 2013 | month = 1 | day = 1 ")
+#4. flights.query(" year = 2013 | month = 1 | day = 1 ")
